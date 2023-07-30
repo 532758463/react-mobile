@@ -12,14 +12,14 @@ export const lorem = new LoremIpsum({
   }
 });
 
-export const DemoBlock = ({ title, children }) => (
+export const DemoBlock = ({ title, children }: any) => (
   <div style={{ padding: 16 }}>
     <h3>{title}</h3>
     {children}
   </div>
 );
 
-export const DemoDescription = ({ children }) => (
+export const DemoDescription = ({ children }: any) => (
   <div style={{ opacity: 0.5 }}>{children}</div>
 );
 
