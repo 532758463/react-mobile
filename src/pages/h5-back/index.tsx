@@ -29,7 +29,7 @@ export const PopupPageDemo = () => {
         >
           <div style={{ padding: '24px' }}>
             <Space direction="vertical">
-              <div>这是弹出层1</div>
+              <div>我是第一个弹出层</div>
               <Button
                 onClick={() => {
                   setVisible2(true);
@@ -49,11 +49,10 @@ export const PopupPageDemo = () => {
           setVisible={setVisible2}
           bodyStyle={{ height: '30vh' }}
         >
-          <div style={{ padding: '24px' }}>
-            <div>这是弹出层2</div>
-          </div>
           <Space direction="vertical">
-            <div>这是弹出层1</div>
+            <div style={{ padding: '24px' }}>
+              <div>这是弹出层2</div>
+            </div>
             <Button
               onClick={() => {
                 setVisible3(true);

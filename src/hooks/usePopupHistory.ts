@@ -37,6 +37,7 @@ const useHistoryPopup = (props: IProps) => {
     const url = baseUrl?.includes('?')
       ? baseUrl + `&${popupKey}`
       : baseUrl + `?${popupKey}`;
+    // 此时push会多一条历史记录，用绝对地址兼容hashRouter, 可将App.tsx中BrowserRouter替换HashRouter尝试
     history.pushState({ popupKey }, '', url);
     // history.pushState({ popupKey }, '', `?${popupKey}`);
   }
@@ -58,6 +59,7 @@ const useHistoryPopup = (props: IProps) => {
   }
 
   useEffect(() => {
+    // 浏览器state变化时，如果存在记录，物理返回会自定清除一次记录
     window.addEventListener('popstate', onQueryChange);
     return () => {
       // 离开页面的时候取消监听popstate
@@ -67,12 +69,10 @@ const useHistoryPopup = (props: IProps) => {
 
   useEffect(() => {
     if (visible) {
-      // 打开，添加query
-      console.log('添加query');
+      // 打开，添加query,增加一条历史记录
       open();
     } else {
-      // 否则关闭,清除state
-      console.log('关闭');
+      // 否则关闭，此时不会清除历史记录，非popstate触发，需要手动清除历史记录(在弹窗层触发的关闭)
       if (hasBackRecord()) {
         back();
       }
