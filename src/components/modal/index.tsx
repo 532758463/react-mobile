@@ -26,6 +26,8 @@ const Modal = (props: IProps) => {
       visible={dialogVisible}
       onMaskClick={(e) => {
         onMaskClick?.(e);
+        // 弹窗自行关闭时需要执行back，否则会多一个历史记录。
+        // 可替换为内部业务自己的sdk返回方法
         history.back();
       }}
       {...rest}
